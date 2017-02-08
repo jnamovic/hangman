@@ -2,7 +2,7 @@
 public class HangmanView {
 
 	HangmanModel model;
-	String word;
+	String word,guessArea;
 	public HangmanView(HangmanController controller ){
 		
 	}
@@ -10,6 +10,11 @@ public class HangmanView {
 	public void startUp(HangmanModel model, String word){
 		this.model=model;
 		this.word=word;
+	}
+	
+	public String getGuessArea()
+	{
+		return guessArea;
 	}
 	
 	public static void main(String[] args) {
