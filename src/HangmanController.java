@@ -11,6 +11,7 @@ public class HangmanController extends GraphicsProgram {
 			(new HangmanController()).start();
 		}
 /*{{{{{P4U1}}}}}*/
+
 		/** Initialize the view and model. */
 		public void init () {
 			view = new HangmanView(this);
