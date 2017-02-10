@@ -3,7 +3,8 @@ import java.util.ArrayList;
 public class HangmanModel {
 
 	HangmanView view;  // the view
-	private String word="heeevcedeefeaeck";
+	private String word="he-ck",guessArea="";
+	String weirdchars="'-_!.{}:"; 
 	private Dictionary dict;
 	private int guesses=0;
 	private final int MAX_GUESS=5;
@@ -15,41 +16,46 @@ public class HangmanModel {
 	}
 	
 	public void setUpGame(){
-		//word=dict.getWord();
-		view.startUp(this,word);
+		word=dict.getWord();
+		for(int i=0;i<word.length();i++){
+			if((weirdchars.indexOf(""+word.charAt(i))<0))
+			guessArea+="?";
+			else
+				guessArea+=word.charAt(i);
+		}
+		view.startUp(this,guessArea);
 		guessMade('e');
 	}
 	
 	public void guessMade(char letter){
-			ArrayList<Integer> morgrius=new ArrayList<Integer>();
+			ArrayList<Integer> letterloc=new ArrayList<Integer>();
 			String guessword= view.getGuessArea();
 			for(int i=0;i<word.length();i++){
 				if(word.charAt(i)==letter){
-					morgrius.add(i);
+					letterloc.add(i);
 				}
 			}
-			if(morgrius.size()==0){
+			if(letterloc.size()==0){
 				guesses++;
 				view.guess(guessword, false);
 				System.out.println("nop");
+				
 			}
 			else{
-				int fubbo=morgrius.size();
-				for(int i=0;i<fubbo;i++){
-					guessword=guessword.substring(0,morgrius.get(0))+letter+guessword.substring(morgrius.get(0)+1,guessword.length());
-					morgrius.remove(0);
+				for(int i=0;i<letterloc.size();i++){
+					guessword=guessword.substring(0,letterloc.get(i))+letter+guessword.substring(letterloc.get(i)+1,guessword.length());
 					System.out.println(guessword);
 				}
 				view.guess(guessword, true);
 			}
 			
 			if (view.getGuessArea().equals(word)) {
-				//view.winNotification();
+				view.winNotification();
 				return;
 			}
 			
 			if (guesses>MAX_GUESS) {
-				//view.loseNotification();
+				view.loseNotification();
 				return;
 			}
 		
