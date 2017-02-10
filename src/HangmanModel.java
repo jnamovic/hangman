@@ -15,13 +15,14 @@ public class HangmanModel {
 	}
 	
 	public void setUpGame(){
-		word=dict.getWord();
+		//word=dict.getWord();
 		view.startUp(this,word);
 		guessMade('e');
 	}
 	
 	public void guessMade(char letter){
 			ArrayList<Integer> morgrius=new ArrayList<Integer>();
+			String guessword= view.getGuessArea();
 			for(int i=0;i<word.length();i++){
 				if(word.charAt(i)==letter){
 					morgrius.add(i);
@@ -29,14 +30,17 @@ public class HangmanModel {
 			}
 			if(morgrius.size()==0){
 				guesses++;
-				view.guess(word, false);
+				view.guess(guessword, false);
+				System.out.println("nop");
 			}
 			else{
-				String guessword= view.getGuessArea();
-				for(int i=0;i<morgrius.size();i++){
+				int fubbo=morgrius.size();
+				for(int i=0;i<fubbo;i++){
 					guessword=guessword.substring(0,morgrius.get(0))+letter+guessword.substring(morgrius.get(0)+1,guessword.length());
+					morgrius.remove(0);
 					System.out.println(guessword);
 				}
+				view.guess(guessword, true);
 			}
 			
 			if (view.getGuessArea().equals(word)) {

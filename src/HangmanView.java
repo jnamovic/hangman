@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class HangmanView {
 
 	HangmanModel model;
-	String word,guessArea;
+	String word,guessArea="";
 	Gallows execute;
 	private final double wid = 500;
 	private final double ht = 650;
@@ -15,6 +15,9 @@ public class HangmanView {
 	public void startUp(HangmanModel model, String word){
 		this.model=model;
 		this.word=word;
+		for(int i=0;i<word.length();i++){
+			guessArea+="?";
+		}
 	}
 	
 	public String getGuessArea()
