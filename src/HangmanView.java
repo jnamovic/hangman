@@ -21,25 +21,9 @@ public class HangmanView {
 	{
 		return guessArea;
 	}
-	public void guess(ArrayList<Integer> g)
+	public void guess(String guess, boolean good)
 	{
-		if(g.get(0)==-1)
-		{
-			execute.drawNextPart();
-		}
-		else
-		{
-			while(g.size()>=1){
-				if(g.get(0)==0)//for first letter mess ups
-				{
-					guessArea = guessedLetter + guessArea.substring(1);
-					g.remove(0);
-					break;
-				}
-				if(g.get(0)==)
-				guessArea = guessArea.substring(0, g.get(0))+guessedLetter + guessArea.substring(g.get(0));
-			}
-		}
+		
 	}
 	
 	public static void main(String[] args) {
