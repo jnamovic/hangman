@@ -1,13 +1,15 @@
 import java.util.ArrayList;
 
-public class HangmanView {
+import acm.graphics.GCompound;
+
+public class HangmanView extends GCompound {
 
 	HangmanModel model;
-	String word,guessArea="";
+	String word;
 	Gallows execute;
+	LetterArea areaOfLetters;
 	private final double wid = 500;
 	private final double ht = 650;
-	
 	char guessedLetter;
 	public HangmanView(HangmanController controller){
 		execute = new Gallows(wid, ht);
@@ -16,13 +18,13 @@ public class HangmanView {
 	public void startUp(HangmanModel model, String word){
 		this.model=model;
 		this.word=word;
+		areaOfLetters=new LetterArea(word); 
+		execute = new Gallows(wid, ht);
+		add (execute);
+		add(areaOfLetters);
 		
 	}
 	
-	public String getGuessArea()
-	{
-		return guessArea;
-	}
 	public void guess(String guess, boolean good)
 	{
 		
