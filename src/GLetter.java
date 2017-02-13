@@ -1,16 +1,55 @@
 import java.awt.Color;
 
-import acm.graphics.GLabel;
+import acm.graphics.*;
 
-public class GLetter extends GLabel
+
+public class GLetter extends GCompound
 {
+	GLabel letter;
+	GRect back;
+	GLine x1,x2,czech1,czech2;
+	char passedLet;
 	public GLetter(String s)
-	{
-		super(s);
+	{//asdf
+		passedLet=s.charAt(0);
+		letter = new GLabel(s);
+		back = new GRect(letter.getWidth(),letter.getHeight());
+		add(letter);
+		add(back,letter.getX(),letter.getY());
+		x1 = new GLine(letter.getX(),letter.getY(),letter.getX()+letter.getWidth(),letter.getY()+letter.getHeight());
+		x1.setColor(Color.red);
+		x1.setVisible(false);
+		x2 = new GLine(letter.getX(),letter.getY(),letter.getX()+letter.getHeight()+letter.getWidth(),letter.getY());
+		x2.setColor(Color.red);
+		x2.setVisible(false);
+		back.setVisible(false);
+		add(x1);
+		add(x2);
+		czech1 = new GLine(letter.getX(),letter.getY()+letter.getHeight()/2,letter.getX()+letter.getWidth()/2,letter.getY()+letter.getHeight());
+		czech1.setColor(Color.green);
+		czech1.setVisible(false);
+		czech2 = new GLine(letter.getX()+letter.getWidth()/2,letter.getY()+letter.getHeight(),letter.getX()+letter.getWidth(),letter.getY());
+		czech2.setColor(Color.green);
+		czech2.setVisible(false);
+		add(czech1);
+		add(czech2);
 	}
-	/*private void changeColor(GLetter guess, boolean )
+	public void onceGuessed(boolean guessResult)
 	{
-		if()
-		guess.setColor(Color.lightGray);
-	}*/
-}
+		back.setLocation(-600,-600);
+		if(guessResult)
+		{
+			czech1.setVisible(true);
+			czech2.setVisible(true);
+		}
+		else
+		{
+			x1.setVisible(true);
+			x2.setVisible(true);
+		}
+	}
+	public char getLetter()
+	{
+	return passedLet;
+	}
+	}
