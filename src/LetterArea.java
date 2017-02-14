@@ -51,4 +51,5 @@ public class LetterArea extends GCompound
 	{
 		displayedWord.setLabel(s);
 	}
+	
 }

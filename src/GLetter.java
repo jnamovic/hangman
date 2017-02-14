@@ -9,6 +9,7 @@ public class GLetter extends GCompound
 	GRect back;
 	GLine x1,x2,czech1,czech2;
 	char passedLet;
+	boolean clickedAlready = false;
 	public GLetter(String s)
 	{//asdf
 		passedLet=s.charAt(0);
@@ -34,8 +35,13 @@ public class GLetter extends GCompound
 		add(czech1);
 		add(czech2);
 	}
+	public boolean clickedAlready()
+	{
+		return clickedAlready;
+	}
 	public void onceGuessed(boolean guessResult)
 	{
+		clickedAlready=true;
 		back.setLocation(-600,-600);
 		if(guessResult)
 		{
