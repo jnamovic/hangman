@@ -5,7 +5,7 @@ public class HangmanModel {
 	final private Scanner scan=new Scanner(System.in);
 			
 	HangmanView view;  // the view
-	private String word,guessWord;
+	private String word,guessWord="";
 	String weirdchars="'-_!.{}:"; 
 	boolean test=true;
 	private Dictionary dict;
