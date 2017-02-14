@@ -17,7 +17,7 @@ public class HangmanModel {
 		setUpGame();
 		
 	}
-	
+	//
 	public void setUpGame(){
 		word=dict.getWord();
 		for(int i=0;i<word.length();i++){
