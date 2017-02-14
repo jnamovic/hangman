@@ -16,7 +16,7 @@ public class HangmanView extends GCompound {
 	String word,message;
 	Gallows execute;
 	LetterArea areaOfLetters;
-	JLabel feedback;
+	JLabel feedback = new JLabel(message);
 	private final double wid = 500;
 	private final double ht = 650;
 	char guessedLetter;
@@ -33,7 +33,6 @@ public class HangmanView extends GCompound {
 		add (execute);
 		message = "Welcome to Hangman";
 		add(areaOfLetters);
-		feedback = new JLabel(message);
 		game.add(feedback, Program.NORTH);
 		
 	}
