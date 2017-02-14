@@ -13,8 +13,8 @@ public class LetterArea extends GCompound
 		displayedWord = new GLabel(guess);
 		add(displayedWord);
 		for(int i=0; i<guessDisplay.size();i++)
-			add(guessDisplay.get(i),guessDisplay.get(i).getWidth()*i/13,
-					guessDisplay.get(i).getHeight()*i%13+displayedWord.getY());
+			add(guessDisplay.get(i),500+15*i%13+50*i/13,
+					i/13*guessDisplay.get(i).getHeight()+50);
 		
 			
 	}
