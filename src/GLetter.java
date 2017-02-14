@@ -23,7 +23,7 @@ public class GLetter extends GCompound
 		x2 = new GLine(letter.getX(),letter.getY(),letter.getX()+letter.getHeight()+letter.getWidth(),letter.getY());
 		x2.setColor(Color.red);
 		x2.setVisible(false);
-		back.setVisible(false);
+		//back.setVisible(false);
 		add(x1);
 		add(x2);
 		czech1 = new GLine(letter.getX(),letter.getY()+letter.getHeight()/2,letter.getX()+letter.getWidth()/2,letter.getY()+letter.getHeight());
