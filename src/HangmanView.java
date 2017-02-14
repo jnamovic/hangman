@@ -31,7 +31,7 @@ public class HangmanView extends GCompound {
 		this.word=word;
 		areaOfLetters=new LetterArea(word); 
 		execute = new Gallows(wid, ht);
-		add (execute);
+		add (execute, 200,0);
 		execute.reset();
 		message = "Welcome to Hangman";
 		add(areaOfLetters);
