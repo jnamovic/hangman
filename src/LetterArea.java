@@ -10,7 +10,7 @@ public class LetterArea extends GCompound
 	public LetterArea(String guess)
 	{
 		populateDisplay();
-		displayedWord = new GLabel(guess);
+		displayedWord = new GLabel(guess, 300, 300);
 		add(displayedWord);
 		System.out.println(guess);
 		for(int i=0; i<guessDisplay.size();i++)

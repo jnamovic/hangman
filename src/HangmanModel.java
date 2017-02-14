@@ -6,7 +6,7 @@ public class HangmanModel {
 			
 	HangmanView view;  // the view
 	private String word,guessWord="";
-	String weirdchars="'-_!.{}:"; 
+	String weirdchars="'-_!.{}: "; 
 	boolean test=true;
 	private Dictionary dict;
 	private int guesses=0;
@@ -20,6 +20,7 @@ public class HangmanModel {
 	
 	public void setUpGame(){
 		word=dict.getWord();
+		word = "blah blag";
 		for(int i=0;i<word.length();i++){
 			if((weirdchars.indexOf(""+word.charAt(i))<0))
 			guessWord+="?";
