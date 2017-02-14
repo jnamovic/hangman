@@ -32,6 +32,7 @@ public class HangmanView extends GCompound {
 		areaOfLetters=new LetterArea(word); 
 		execute = new Gallows(wid, ht);
 		add (execute);
+		execute.reset();
 		message = "Welcome to Hangman";
 		add(areaOfLetters);
 		game.add(feedback, Program.NORTH);
