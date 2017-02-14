@@ -12,6 +12,7 @@ public class LetterArea extends GCompound
 		populateDisplay();
 		displayedWord = new GLabel(guess);
 		add(displayedWord);
+		System.out.println(guess);
 		for(int i=0; i<guessDisplay.size();i++)
 			add(guessDisplay.get(i),500+15*i%13+50*i/13,
 					i/13*guessDisplay.get(i).getHeight()+50);
