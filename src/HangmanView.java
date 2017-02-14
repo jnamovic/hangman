@@ -1,5 +1,7 @@
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.EventListener;
 
 import javax.swing.JLabel;
 
@@ -9,7 +11,7 @@ import acm.graphics.GObject;
 import acm.graphics.GPoint;
 import acm.program.Program;
 
-public class HangmanView extends GCompound {
+public class HangmanView extends GCompound implements MouseListener {
 
 	HangmanController game;
 	HangmanModel model;
@@ -36,7 +38,7 @@ public class HangmanView extends GCompound {
 		message = "Welcome to Hangman";
 		add(areaOfLetters);
 		game.add(feedback, Program.NORTH);
-		
+		game.addMouseListeners(this);
 	}
 	
 	public void guess(String guess, boolean good)
@@ -56,6 +58,7 @@ public class HangmanView extends GCompound {
 		message = "Hughhhh";
 	}
 	public void mouseClicked(MouseEvent e) {
+		System.out.println("walda");
 		GObject obj = game.getElementAt(new GPoint(e.getPoint()));
 		if (obj == null) return;
 		if (obj instanceof GLetter) {
@@ -67,6 +70,30 @@ public class HangmanView extends GCompound {
 			GLetter gobj = (GLetter) obj;
 			model.guessMade(gobj.getLetter());	
 		}
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	
