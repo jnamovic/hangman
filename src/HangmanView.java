@@ -19,6 +19,7 @@ public class HangmanView extends GCompound implements MouseListener {
 	Gallows execute;
 	LetterArea areaOfLetters;
 	JLabel feedback;
+	GLetter gobj ;
 	private final double wid = 150;
 	private final double ht = 150;
 	char guessedLetter;
@@ -43,10 +44,14 @@ public class HangmanView extends GCompound implements MouseListener {
 	
 	public void guess(String guess, boolean good)
 	{
-		if(good)
+		if(good){
 			areaOfLetters.wordUpdate(guess);
-		else
+			gobj.onceGuessed(true);
+		}
+		else{
 			execute.drawNextPart();
+			gobj.onceGuessed(false);
+		}
 	}
 	public void winNotification()
 	{
@@ -58,9 +63,13 @@ public class HangmanView extends GCompound implements MouseListener {
 		message = "Hughhhh";
 	}
 	public void mouseClicked(MouseEvent e) {
-		System.out.println("walda");
+		
 		GObject obj = areaOfLetters.giveChar(e.getX(),e.getY());
-		GLetter gobj = (GLetter) obj;
+		if(obj==null){
+			return;
+		}
+		gobj = (GLetter) obj;
+		
 		model.guessMade(gobj.getLetter());	
 		
 	}

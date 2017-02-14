@@ -13,7 +13,7 @@ public class GLetter extends GCompound
 	char passedLet;
 	boolean clickedAlready = false;
 	public GLetter(String s)
-	{//asdf
+	{
 		passedLet=s.charAt(0);
 		letter = new GLabel(s);
 		letter.setFont(FONT);

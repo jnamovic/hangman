@@ -7,7 +7,7 @@ public class HangmanModel {
 	HangmanView view;  // the view
 	private String word,guessWord="";
 	String weirdchars="'-_!.{}: "; 
-	boolean test=true;
+	boolean stopgame=false;
 	private Dictionary dict;
 	private int guesses=0;
 	private final int MAX_GUESS=5;
@@ -20,7 +20,6 @@ public class HangmanModel {
 	
 	public void setUpGame(){
 		word=dict.getWord();
-		word = "blah blag";
 		for(int i=0;i<word.length();i++){
 			if((weirdchars.indexOf(""+word.charAt(i))<0))
 			guessWord+="?";
@@ -32,7 +31,9 @@ public class HangmanModel {
 	}
 	
 	public void guessMade(char letter){
-			ArrayList<Integer> letterloc=new ArrayList<Integer>();
+		if(stopgame)
+			return;	
+		ArrayList<Integer> letterloc=new ArrayList<Integer>();
 			
 			for(int i=0;i<word.length();i++){
 				if(word.toLowerCase().charAt(i)==(letter+"").toLowerCase().charAt(0)){
@@ -57,16 +58,18 @@ public class HangmanModel {
 				view.guess(guessWord, true);
 			}
 			
-			if (guessWord.equals(word)) {
+			if (guessWord.toLowerCase().equals(word.toLowerCase())) {
 				view.winNotification();
+				stopgame=true;
 				return;
 			}
 			
 			if (guesses>MAX_GUESS) {
 				view.loseNotification();
+				stopgame=true;
 				return;
 			}
-		
+			
 	}
 	
 

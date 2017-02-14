@@ -60,8 +60,11 @@ public class LetterArea extends GCompound
 	}
 	public GObject giveChar(double x, double y)
 	{
-		GObject obj = game.getElementAt(x,y);
-		if (obj == null) return null;
+		GObject obj = this.getElementAt(x,y);
+		if (!guessDisplay.contains(obj)){
+			System.out.println("its not in the aray");
+			return null;
+		}
 		if (obj instanceof GLetter) {
 			System.out.println("i was clicked");
 			if (((GLetter) obj).clickedAlready()){
@@ -71,6 +74,7 @@ public class LetterArea extends GCompound
 	
 		
 		}
+		
 		return obj;}
 	
 }
