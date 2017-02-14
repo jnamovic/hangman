@@ -17,6 +17,7 @@ public class HangmanController extends GraphicsProgram {
 			view = new HangmanView(this);
 			model = new HangmanModel(view);
 			view.startUp(model, "fish");
+			add(view);
 		}
 	}
 

@@ -1,6 +1,8 @@
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import javax.swing.JLabel;
+
 import acm.graphics.GCompound;
 import acm.graphics.GLabel;
 import acm.graphics.GObject;
@@ -13,8 +15,8 @@ public class HangmanView extends GCompound {
 	HangmanModel model;
 	String word,message;
 	Gallows execute;
-	GLabel feedback;
 	LetterArea areaOfLetters;
+	JLabel feedback;
 	private final double wid = 500;
 	private final double ht = 650;
 	char guessedLetter;
@@ -31,14 +33,17 @@ public class HangmanView extends GCompound {
 		add (execute);
 		message = "Welcome to Hangman";
 		add(areaOfLetters);
-		GLabel feedback = new GLabel(message);
+		feedback = new JLabel(message);
 		game.add(feedback, Program.NORTH);
 		
 	}
 	
 	public void guess(String guess, boolean good)
 	{
-		
+		if(good)
+			areaOfLetters.wordUpdate(guess);
+		else
+			execute.drawNextPart();
 	}
 	public void winNotification()
 	{
