@@ -1,19 +1,22 @@
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import javax.swing.JLabel;
+
 import acm.graphics.GCompound;
 import acm.graphics.GLabel;
 import acm.graphics.GObject;
 import acm.graphics.GPoint;
+import acm.program.Program;
 
 public class HangmanView extends GCompound {
 
 	HangmanController game;
 	HangmanModel model;
-	String word;
+	String word,message;
 	Gallows execute;
-	GLabel feedback;
 	LetterArea areaOfLetters;
+	JLabel feedback;
 	private final double wid = 500;
 	private final double ht = 650;
 	char guessedLetter;
@@ -28,27 +31,35 @@ public class HangmanView extends GCompound {
 		areaOfLetters=new LetterArea(word); 
 		execute = new Gallows(wid, ht);
 		add (execute);
+		message = "Welcome to Hangman";
 		add(areaOfLetters);
+		feedback = new JLabel(message);
+		game.add(feedback, Program.NORTH);
 		
 	}
 	
 	public void guess(String guess, boolean good)
 	{
-		
+		if(good)
+			areaOfLetters.wordUpdate(guess);
+		else
+			execute.drawNextPart();
 	}
-	public void winNotification(){
-		
+	public void winNotification()
+	{
+		message = "Conflagurations, you won!";
 	}
 	
-	public void loseNotification(){
-		
+	public void loseNotification()
+	{
+		message = "Hughhhh";
 	}
 	public void mouseClicked(MouseEvent e) {
 		GObject obj = game.getElementAt(new GPoint(e.getPoint()));
 		if (obj == null) return;
 		if (obj instanceof GLetter) {
 			if (((GLetter) obj).clickedAlready()){
-				//add code for whatever needs to happen when they click something already selected
+				message = "You've already guessed that letter you silly billy";
 				return;
 			}
 			GLetter gobj = (GLetter) obj;
