@@ -3,11 +3,13 @@ import java.util.ArrayList;
 
 import acm.graphics.GCompound;
 import acm.graphics.GLabel;
+import acm.graphics.GObject;
 
 public class LetterArea extends GCompound
 {
 	ArrayList<GLetter> guessDisplay=new ArrayList<GLetter>();
 	GLabel displayedWord;
+	HangmanController game;
 	private static final Font FONT = new Font("Helvetica", Font.BOLD, 30);
 	public LetterArea(String guess)
 	{
@@ -54,6 +56,21 @@ public class LetterArea extends GCompound
 	public void wordUpdate(String s)
 	{
 		displayedWord.setLabel(s);
+		
 	}
+	public GObject giveChar(double x, double y)
+	{
+		GObject obj = game.getElementAt(x,y);
+		if (obj == null) return null;
+		if (obj instanceof GLetter) {
+			System.out.println("i was clicked");
+			if (((GLetter) obj).clickedAlready()){
+				//message = "You've already guessed that letter you silly billy";
+				return null;
+			}
+	
+		
+		}
+		return obj;}
 	
 }

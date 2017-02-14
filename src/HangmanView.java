@@ -59,17 +59,10 @@ public class HangmanView extends GCompound implements MouseListener {
 	}
 	public void mouseClicked(MouseEvent e) {
 		System.out.println("walda");
-		GObject obj = game.getElementAt(new GPoint(e.getPoint()));
-		if (obj == null) return;
-		if (obj instanceof GLetter) {
-			System.out.println("i was clicked");
-			if (((GLetter) obj).clickedAlready()){
-				message = "You've already guessed that letter you silly billy";
-				return;
-			}
-			GLetter gobj = (GLetter) obj;
-			model.guessMade(gobj.getLetter());	
-		}
+		GObject obj = areaOfLetters.giveChar(e.getX(),e.getY());
+		GLetter gobj = (GLetter) obj;
+		model.guessMade(gobj.getLetter());	
+		
 	}
 
 	@Override
