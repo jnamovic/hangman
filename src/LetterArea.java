@@ -5,7 +5,7 @@ import acm.graphics.GLabel;
 
 public class LetterArea extends GCompound
 {
-	ArrayList<GLetter> guessDisplay;
+	ArrayList<GLetter> guessDisplay=new ArrayList<GLetter>();
 	GLabel displayedWord;
 	public LetterArea(String guess)
 	{
