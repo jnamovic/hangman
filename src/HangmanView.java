@@ -47,8 +47,12 @@ public class HangmanView extends GCompound {
 		GObject obj = game.getElementAt(new GPoint(e.getPoint()));
 		if (obj == null) return;
 		if (obj instanceof GLetter) {
+			if (((GLetter) obj).clickedAlready()){
+				//add code for whatever needs to happen when they click something already selected
+				return;
+			}
 			GLetter gobj = (GLetter) obj;
-			//model.((gobj).getLetter());	
+			model.guessMade(gobj.getLetter());	
 		}
 	}
 
