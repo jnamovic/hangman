@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 
 import acm.graphics.*;
 
@@ -7,6 +8,7 @@ public class GLetter extends GCompound
 {
 	GLabel letter;
 	GRect back;
+	private static final Font FONT = new Font("Helvetica", Font.BOLD, 20);
 	GLine x1,x2,czech1,czech2;
 	char passedLet;
 	boolean clickedAlready = false;
@@ -14,6 +16,7 @@ public class GLetter extends GCompound
 	{//asdf
 		passedLet=s.charAt(0);
 		letter = new GLabel(s);
+		letter.setFont(FONT);
 		back = new GRect(letter.getWidth(),letter.getHeight());
 		add(letter);
 		add(back,letter.getX(),letter.getY()-letter.getHeight());

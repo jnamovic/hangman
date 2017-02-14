@@ -1,3 +1,4 @@
+import java.awt.Font;
 import java.util.ArrayList;
 
 import acm.graphics.GCompound;
@@ -7,10 +8,12 @@ public class LetterArea extends GCompound
 {
 	ArrayList<GLetter> guessDisplay=new ArrayList<GLetter>();
 	GLabel displayedWord;
+	private static final Font FONT = new Font("Helvetica", Font.BOLD, 30);
 	public LetterArea(String guess)
 	{
 		populateDisplay();
 		displayedWord = new GLabel(guess, 300, 300);
+		displayedWord.setFont(FONT);
 		add(displayedWord);
 		System.out.println(guess);
 		for(int i=0; i<guessDisplay.size();i++)
