@@ -58,6 +58,7 @@ public class HangmanView extends GCompound {
 		GObject obj = game.getElementAt(new GPoint(e.getPoint()));
 		if (obj == null) return;
 		if (obj instanceof GLetter) {
+			System.out.println("i was clicked");
 			if (((GLetter) obj).clickedAlready()){
 				message = "You've already guessed that letter you silly billy";
 				return;
