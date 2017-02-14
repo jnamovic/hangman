@@ -16,7 +16,7 @@ public class GLetter extends GCompound
 		letter = new GLabel(s);
 		back = new GRect(letter.getWidth(),letter.getHeight());
 		add(letter);
-		add(back,letter.getX(),letter.getY()*-1);
+		add(back,letter.getX(),letter.getY()-letter.getHeight());
 		x1 = new GLine(letter.getX(),letter.getY(),letter.getX()+letter.getWidth(),letter.getY()+letter.getHeight());
 		x1.setColor(Color.red);
 		x1.setVisible(false);
