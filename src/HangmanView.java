@@ -29,8 +29,9 @@ public class HangmanView extends GCompound implements MouseListener, ActionListe
 	public HangmanView(HangmanController controller){
 		execute = new Gallows(wid, ht);
 		game=controller;
-		message = "Welcome to Hangman";
+	
 		feedback = new JLabel(message);
+		feedback.setText("Welcome to Hangman");
 		game.add(feedback, Program.NORTH);
 		game.add(new JButton("New Game"), Program.SOUTH);
 		game.addMouseListeners(this);
@@ -38,9 +39,10 @@ public class HangmanView extends GCompound implements MouseListener, ActionListe
 	}
 	
 	public void startUp(HangmanModel model, String word){
-		game.removeAll();
+		this.removeAll();
 		this.model=model;
 		this.word=word;
+		feedback.setText("Welcome to Hangman");
 		areaOfLetters=new LetterArea(word); 
 		execute = new Gallows(wid, ht);
 		add (execute,300,150);
