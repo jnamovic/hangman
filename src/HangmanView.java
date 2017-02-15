@@ -69,7 +69,6 @@ public class HangmanView extends GCompound implements MouseListener {
 			return;
 		}
 		gobj = (GLetter) obj;
-		
 		model.guessMade(gobj.getLetter());	
 		
 	}

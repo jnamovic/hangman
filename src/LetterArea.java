@@ -17,7 +17,7 @@ public class LetterArea extends GCompound
 		displayedWord = new GLabel(guess, 300, 300);
 		displayedWord.setFont(FONT);
 		add(displayedWord);
-		System.out.println(guess);
+		
 		for(int i=0; i<guessDisplay.size();i++)
 			add(guessDisplay.get(i),500+15*(i%13),
 					(i/13)*guessDisplay.get(i).getHeight()+50);
@@ -62,11 +62,11 @@ public class LetterArea extends GCompound
 	{
 		GObject obj = this.getElementAt(x,y);
 		if (!guessDisplay.contains(obj)){
-			System.out.println("its not in the aray");
+			
 			return null;
 		}
 		if (obj instanceof GLetter) {
-			System.out.println("i was clicked");
+			
 			if (((GLetter) obj).clickedAlready()){
 				//message = "You've already guessed that letter you silly billy";
 				return null;

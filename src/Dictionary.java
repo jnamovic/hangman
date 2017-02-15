@@ -37,7 +37,7 @@ public class Dictionary {
 			}
 		}	
 		catch(FileNotFoundException s){
-			System.out.println("help");
+			
 		}
 		return word;
 	}
