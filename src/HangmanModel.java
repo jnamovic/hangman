@@ -19,7 +19,9 @@ public class HangmanModel {
 	}
 	
 	public void setUpGame(){
-		word=dict.getWord();
+		word=dict.getNewWord();
+		stopgame=false;
+		guessWord="";
 		for(int i=0;i<word.length();i++){
 			if((weirdchars.indexOf(""+word.charAt(i))<0))
 			guessWord+="?";
