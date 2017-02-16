@@ -37,44 +37,48 @@ public class HangmanModel {
 		if(stopgame)
 			return;	
 		ArrayList<Integer> letterloc=new ArrayList<Integer>();
+		for(int i=0;i<word.length();i++){
+			if(word.toLowerCase().charAt(i)==(letter+"").toLowerCase().charAt(0)){
+				letterloc.add(i);
+			}
+		}
+		if(letterloc.size()==0){
+			guesses++;
+			view.guess(guessWord, false);			
+		}
+		else{
+			for(int i=0;i<letterloc.size();i++){
 			
-			for(int i=0;i<word.length();i++){
-				if(word.toLowerCase().charAt(i)==(letter+"").toLowerCase().charAt(0)){
-					letterloc.add(i);
+				if(letterloc.get(i)==0){
+					letter=(letter+"").toUpperCase().charAt(0);
 				}
-			}
-			if(letterloc.size()==0){
-				guesses++;
-				view.guess(guessWord, false);
-				
-			}
-			else{
-				for(int i=0;i<letterloc.size();i++){
-					if(letterloc.get(i)==0){
-						letter=(letter+"").toUpperCase().charAt(0);
-					}else{
-						letter=(letter+"").toLowerCase().charAt(0);
-					}
-					guessWord=guessWord.substring(0,letterloc.get(i))+letter+guessWord.substring(letterloc.get(i)+1,guessWord.length());
+				else{
+					letter=(letter+"").toLowerCase().charAt(0);
+			
+				}
+				guessWord=guessWord.substring(0,letterloc.get(i))+letter+guessWord.substring(letterloc.get(i)+1,guessWord.length());
 					
-				}
-				view.guess(guessWord, true);
 			}
+			view.guess(guessWord, true);
+		}
 			
-			if (guessWord.toLowerCase().equals(word.toLowerCase())) {
-				win++;
-				stopgame=true;
-				view.winNotification();
-				return;
-			}
+		if (guessWord.toLowerCase().equals(word.toLowerCase())) {
+			win++;
+			stopgame=true;
+			view.winNotification();
+			return;
+		}
 			
-			if (guesses>MAX_GUESS) {
-				lose++;
-				stopgame=true;
-				view.loseNotification(word);
-				return;
-			}
+		if (guesses>MAX_GUESS) {
+			lose++;
+			stopgame=true;
+			view.loseNotification(word);
+			return;
+		}
 			
+	}
+	public void addLoss(){
+		lose++;
 	}
 	
 
