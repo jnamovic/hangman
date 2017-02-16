@@ -29,8 +29,7 @@ public class HangmanModel {
 			else
 				guessWord+=word.charAt(i);
 		}
-		view.startUp(this,guessWord);
-		view.drawScore(win, lose);
+		//view.startUp(this,guessWord,win,lose);
 	}
 	
 	public void guessMade(char letter){
