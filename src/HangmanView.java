@@ -23,6 +23,7 @@ public class HangmanView extends GCompound implements MouseListener, ActionListe
 	LetterArea areaOfLetters;
 	JLabel feedback;
 	GLetter gobj ;
+	JButton button;
 	private final double wid = 150;
 	private final double ht = 150;
 	char guessedLetter;
@@ -32,7 +33,8 @@ public class HangmanView extends GCompound implements MouseListener, ActionListe
 		feedback = new JLabel(message);
 		feedback.setText("Welcome to Hangman");
 		game.add(feedback, Program.NORTH);
-		game.add(new JButton("New Game"), Program.SOUTH);
+		button = new JButton("New Game");
+		game.add(button, Program.SOUTH);
 		game.addMouseListeners(this);
 		game.addActionListeners(this);
 	}
@@ -46,7 +48,7 @@ public class HangmanView extends GCompound implements MouseListener, ActionListe
 		execute = new Gallows(wid, ht);
 		add (execute,300,150);
 		execute.reset();
-		
+		button.setEnabled(false);
 		add(areaOfLetters);
 		game.add(this);
 		
@@ -68,6 +70,7 @@ public class HangmanView extends GCompound implements MouseListener, ActionListe
 		
 		message = "Conflagurations, you won!";
 		feedback.setText(message);
+		button.setEnabled(true);
 		
 	}
 	
@@ -76,8 +79,13 @@ public class HangmanView extends GCompound implements MouseListener, ActionListe
 		message = "Hughhhh";
 		feedback.setText(message);
 		areaOfLetters.wordUpdate(word);
+		button.setEnabled(true);
+	}
+	public void drawScore(int won, int lost)
+	{
 		
 	}
+	
 	public void mouseClicked(MouseEvent e) {
 		
 		GObject obj = areaOfLetters.giveChar(e.getX(),e.getY());
@@ -94,8 +102,7 @@ public class HangmanView extends GCompound implements MouseListener, ActionListe
 			model.setUpGame();
 		}
 	}
-	@Override
-	public void mouseEntered(MouseEvent e) {
+		public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
