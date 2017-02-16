@@ -24,7 +24,7 @@ public class HangmanView extends GCompound implements MouseListener, ActionListe
 	String word,message;
 	Gallows execute;
 	LetterArea areaOfLetters;
-	JLabel feedback;
+	JLabel feedback,score;
 	GLetter gobj ;
 	JButton button;
 	private final double wid = 150;
@@ -34,6 +34,7 @@ public class HangmanView extends GCompound implements MouseListener, ActionListe
 		execute = new Gallows(wid, ht);
 		game=controller;
 		feedback = new JLabel(message);
+		score = new JLabel();
 		game.add(feedback, Program.NORTH);
 		button = new JButton("Concede");
 		game.add(button, Program.SOUTH);
@@ -42,11 +43,13 @@ public class HangmanView extends GCompound implements MouseListener, ActionListe
 		catchResizeEvents();
 	}
 	
-	public void startUp(HangmanModel model, String word){
+	public void startUp(HangmanModel model, String word,int win, int lose){
 		this.removeAll();
 		this.model=model;
 		this.word=word;
 		feedback.setText("Welcome to Hangman");
+		score.setText("Won: " + win + " Lost: " + lose);
+		game.add(score, Program.SOUTH);
 		areaOfLetters=new LetterArea(word); 
 		add (execute,wid*2,ht);
 		execute.reset();
