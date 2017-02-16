@@ -9,7 +9,7 @@ public class HangmanModel {
 	String weirdchars="'-_!.{}: "; 
 	boolean stopgame=false;
 	private Dictionary dict;
-	private int guesses=0;
+	private int guesses=0,win=0, lose=0;
 	private final int MAX_GUESS=5;
 	public HangmanModel(HangmanView view){
 		this.view=view;
@@ -30,7 +30,7 @@ public class HangmanModel {
 				guessWord+=word.charAt(i);
 		}
 		view.startUp(this,guessWord);
-		
+		view.drawScore(win, lose);
 	}
 	
 	public void guessMade(char letter){
@@ -62,17 +62,16 @@ public class HangmanModel {
 			}
 			
 			if (guessWord.toLowerCase().equals(word.toLowerCase())) {
-				view.winNotification();
-				
+				win++;
 				stopgame=true;
+				view.winNotification();
 				return;
 			}
 			
 			if (guesses>MAX_GUESS) {
-				
-				view.loseNotification(word);
-				
+				lose++;
 				stopgame=true;
+				view.loseNotification(word);
 				return;
 			}
 			
