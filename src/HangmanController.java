@@ -3,7 +3,7 @@ import acm.program.GraphicsProgram;
 public class HangmanController extends GraphicsProgram {
 
 
-		
+		int totalwins=0,totallosses=0;
 		HangmanView view;
 		HangmanModel model;
 
