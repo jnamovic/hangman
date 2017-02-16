@@ -34,9 +34,8 @@ public class HangmanView extends GCompound implements MouseListener, ActionListe
 		execute = new Gallows(wid, ht);
 		game=controller;
 		feedback = new JLabel(message);
-		feedback.setText("Welcome to Hangman");
 		game.add(feedback, Program.NORTH);
-		button = new JButton("New Game");
+		button = new JButton("Concede");
 		game.add(button, Program.SOUTH);
 		game.addMouseListeners(this);
 		game.addActionListeners(this);
@@ -49,10 +48,8 @@ public class HangmanView extends GCompound implements MouseListener, ActionListe
 		this.word=word;
 		feedback.setText("Welcome to Hangman");
 		areaOfLetters=new LetterArea(word); 
-		execute = new Gallows(wid, ht);
-		add (execute,300,150);
+		add (execute,wid*2,ht);
 		execute.reset();
-		button.setEnabled(false);
 		add(areaOfLetters);
 		game.add(this);
 		
@@ -74,7 +71,7 @@ public class HangmanView extends GCompound implements MouseListener, ActionListe
 		
 		message = "Conflagurations, you won!";
 		feedback.setText(message);
-		button.setEnabled(true);
+		button.setText("New Game");
 		
 	}
 	
@@ -83,11 +80,7 @@ public class HangmanView extends GCompound implements MouseListener, ActionListe
 		message = "Hughhhh";
 		feedback.setText(message + " you lost");
 		areaOfLetters.wordUpdate(word);
-		button.setEnabled(true);
-	}
-	public void drawScore(int won, int lost)
-	{
-		
+		button.setText("New Game");
 	}
 	
 	public void mouseClicked(MouseEvent e) {
@@ -103,6 +96,10 @@ public class HangmanView extends GCompound implements MouseListener, ActionListe
 	
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("New Game")) {
+			model.setUpGame();
+		}
+		if(e.getActionCommand().equals("Concede")){
+			model.addLoss();
 			model.setUpGame();
 		}
 	}
