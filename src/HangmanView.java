@@ -1,5 +1,7 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -12,6 +14,7 @@ import acm.graphics.GCompound;
 import acm.graphics.GLabel;
 import acm.graphics.GObject;
 import acm.graphics.GPoint;
+import acm.graphics.GScalable;
 import acm.program.Program;
 
 public class HangmanView extends GCompound implements MouseListener, ActionListener {
@@ -37,6 +40,7 @@ public class HangmanView extends GCompound implements MouseListener, ActionListe
 		game.add(button, Program.SOUTH);
 		game.addMouseListeners(this);
 		game.addActionListeners(this);
+		catchResizeEvents();
 	}
 	
 	public void startUp(HangmanModel model, String word){
@@ -101,6 +105,27 @@ public class HangmanView extends GCompound implements MouseListener, ActionListe
 		if (e.getActionCommand().equals("New Game")) {
 			model.setUpGame();
 		}
+	}
+	private double width,height;
+	private void catchResizeEvents() {
+		width = game.getWidth();
+		height = game.getHeight();
+
+		game.addComponentListener(new ComponentAdapter() {
+			public void componentResized(ComponentEvent e) {
+				double scaleX = game.getWidth() / width,  scaleY = game.getHeight() / height;
+				for (int i = 0; i < game.getElementCount(); i++) {
+					Object obj = game.getElement(i);
+					if (obj instanceof GObject) {
+						if (obj instanceof GScalable) {
+							((GScalable) obj).scale(scaleX, scaleY);
+						}
+						((GObject) obj).setLocation(((GObject) obj).getX()*scaleX, ((GObject) obj).getY()*scaleY);
+					}
+				}
+				width = game.getWidth(); height = game.getHeight();
+			}
+		}); 		
 	}
 		public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
