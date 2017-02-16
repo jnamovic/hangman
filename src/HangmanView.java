@@ -29,7 +29,6 @@ public class HangmanView extends GCompound implements MouseListener, ActionListe
 	public HangmanView(HangmanController controller){
 		execute = new Gallows(wid, ht);
 		game=controller;
-	
 		feedback = new JLabel(message);
 		feedback.setText("Welcome to Hangman");
 		game.add(feedback, Program.NORTH);
@@ -72,10 +71,11 @@ public class HangmanView extends GCompound implements MouseListener, ActionListe
 		
 	}
 	
-	public void loseNotification()
+	public void loseNotification(String word)
 	{
 		message = "Hughhhh";
 		feedback.setText(message);
+		areaOfLetters.wordUpdate(word);
 		
 	}
 	public void mouseClicked(MouseEvent e) {

@@ -63,12 +63,15 @@ public class HangmanModel {
 			
 			if (guessWord.toLowerCase().equals(word.toLowerCase())) {
 				view.winNotification();
+				
 				stopgame=true;
 				return;
 			}
 			
 			if (guesses>MAX_GUESS) {
-				view.loseNotification();
+				
+				view.loseNotification(word);
+				
 				stopgame=true;
 				return;
 			}
