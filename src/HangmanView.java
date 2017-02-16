@@ -77,7 +77,7 @@ public class HangmanView extends GCompound implements MouseListener, ActionListe
 	public void loseNotification(String word)
 	{
 		message = "Hughhhh";
-		feedback.setText(message);
+		feedback.setText(message + " you lost");
 		areaOfLetters.wordUpdate(word);
 		button.setEnabled(true);
 	}
