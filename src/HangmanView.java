@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
@@ -27,11 +28,13 @@ public class HangmanView extends GCompound implements MouseListener, ActionListe
 	JLabel feedback,score;
 	GLetter gobj ;
 	JButton button;
-	private final double wid = 150;
-	private final double ht = 150;
+	private final double WID = 150;
+	private final double HT = 150;
+	private final double LETTERX = 350;
+	private final double LETTERY = 100;
 	char guessedLetter;
 	public HangmanView(HangmanController controller){
-		execute = new Gallows(wid, ht);
+		execute = new Gallows(WID, HT);
 		game=controller;
 		feedback = new JLabel(message);
 		score = new JLabel();
@@ -51,9 +54,10 @@ public class HangmanView extends GCompound implements MouseListener, ActionListe
 		score.setText("Won: " + win + " Lost: " + lose);
 		game.add(score, Program.SOUTH);
 		areaOfLetters=new LetterArea(word); 
-		add (execute,wid*2,ht);
+		add (execute,WID*2,HT);
 		execute.reset();
-		add(areaOfLetters);
+		add(areaOfLetters, execute.getX()-LETTERX, execute.getY()-LETTERY);
+		areaOfLetters.displayedWord.setColor(Color.black);
 		game.add(this);
 		
 	}
@@ -75,6 +79,7 @@ public class HangmanView extends GCompound implements MouseListener, ActionListe
 		message = "Conflagurations, you won!";
 		feedback.setText(message);
 		button.setText("New Game");
+		areaOfLetters.displayedWord.setColor(Color.green);
 		
 	}
 	
@@ -83,6 +88,7 @@ public class HangmanView extends GCompound implements MouseListener, ActionListe
 		message = "Hughhhh";
 		feedback.setText(message + " you lost");
 		areaOfLetters.wordUpdate(word);
+		areaOfLetters.displayedWord.setColor(Color.red);
 		button.setText("New Game");
 	}
 	

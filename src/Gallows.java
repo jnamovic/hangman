@@ -14,6 +14,7 @@ public class Gallows extends GCompound implements ProgressivelyDrawable {
 	 */
 	private static final Color dead = new Color(103,1,53);
 	private static final Color alive = new Color(225,184,153);
+	private static final Color pants = new Color(60,59,34);
 	public Gallows(double wid, double ht) {
 		super();
 		width = wid;
@@ -76,6 +77,7 @@ public class Gallows extends GCompound implements ProgressivelyDrawable {
 	private void addBody(){
 		GRect body = createBody();
 		add(body, -width/2 + 0.55*width, -height/2 + 0.35*height);
+		body.setFillColor(Color.black);
 	}
 
 	private void addLeftArm(){
@@ -93,6 +95,7 @@ public class Gallows extends GCompound implements ProgressivelyDrawable {
 	private void addLeftLeg(){
 		GPolygon leg = createLeftLeg();
 		add(leg, -width/2 + 0.65*width, -height/2 + (0.35 + BODY_HEIGHT)*height);
+		leg.setFillColor(pants);
 	}
 	
 	private void addRightLeg(){
@@ -107,6 +110,7 @@ public class Gallows extends GCompound implements ProgressivelyDrawable {
 		GPolygon leftArm = createLeftArm();
 		add(leftArm, -width/2 + 0.55*width, -height/2 + 0.35*height);
 		leftArm.setFillColor(dead);
+		leg.setFillColor(pants);
 	}
 
 	// The following methods create the hangman parts.
