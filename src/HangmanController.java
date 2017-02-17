@@ -26,6 +26,14 @@ public class HangmanController extends GraphicsProgram {
 			model = new HangmanModel(view);
 			
 		}
+		public void run()
+		{
+			while(true)
+			{
+				view.areaOfLetters.change();
+				//view.areaOfLetters.differentChange();
+			}
+		}
 	}
 
 

@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
 
@@ -92,5 +93,27 @@ public class LetterArea extends GCompound
 		}
 		
 		return obj;}
+	public void change()
+	{
+		int r = (int) (Math.random()*256);
+		int g = (int) (Math.random()*256);
+		int b = (int) (Math.random()*256);
+		Color what = new Color(r,g,b);
+		int fun = (int) (guessDisplay.size()*Math.random());
+		guessDisplay.get(fun).letter.setColor(what);
+	}
+	public void differentChange()
+	{
+		int r = (int) (Math.random()*256);
+		int g = (int) (Math.random()*256);
+		int b = (int) (Math.random()*256);
+		Color what = new Color(r,g,b);
+		for(int i =0; i<guessDisplay.size();i++)
+		{
+				guessDisplay.get(i).letter.setColor(what);
+		}
+			
+	}
+	
 	
 }
