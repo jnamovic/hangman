@@ -12,6 +12,10 @@ public class GLetter extends GCompound
 	GLine x1,x2,czech1,czech2;
 	char passedLet;
 	boolean clickedAlready = false;
+	/**
+	 * Creates a GLetter containing a char, an x and a check and a box around it
+	 * @param s
+	 */
 	public GLetter(String s)
 	{
 		passedLet=s.charAt(0);
@@ -38,10 +42,18 @@ public class GLetter extends GCompound
 		add(czech1);
 		add(czech2);
 	}
+	/**
+	 * passes itself
+	 * @return
+	 */
 	public boolean clickedAlready()
 	{
 		return clickedAlready;
 	}
+	/**
+	 * makes the gletter unclickable and turns on a check or x
+	 * @param guessResult
+	 */
 	public void onceGuessed(boolean guessResult)
 	{
 		clickedAlready=true;
@@ -57,6 +69,10 @@ public class GLetter extends GCompound
 			x2.setVisible(true);
 		}
 	}
+	/**
+	 * returns the buried char
+	 * @return
+	 */
 	public char getLetter()
 	{
 	return passedLet;

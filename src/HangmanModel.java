@@ -17,7 +17,9 @@ public class HangmanModel {
 		setUpGame();
 		
 	}
-	
+	/**
+	 * pulls a new word, resets all counters and displays the guessword
+	 */
 	public void setUpGame(){
 		word=dict.getNewWord();
 		stopgame=false;
@@ -31,7 +33,10 @@ public class HangmanModel {
 		}
 		view.startUp(this,guessWord,win,lose);
 	}
-	
+	/**
+	 * Checks a guess against the word, updates the guess word and returns whether or not they were right
+	 * @param letter
+	 */
 	public void guessMade(char letter){
 		if(stopgame)
 			return;	
@@ -76,6 +81,9 @@ public class HangmanModel {
 		}
 			
 	}
+	/**
+	 * Adds 1 to the loss counter
+	 */
 	public void addLoss(){
 		lose++;
 	}

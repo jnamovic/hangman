@@ -24,6 +24,9 @@ public class LetterArea extends GCompound
 		
 			
 	}
+	/**
+	 * This mess makes all the gletters and adds them to an array list
+	 */
 	private void populateDisplay()
 	{
 		guessDisplay.add(new GLetter("a"));
@@ -53,11 +56,21 @@ public class LetterArea extends GCompound
 		guessDisplay.add(new GLetter("y"));
 		guessDisplay.add(new GLetter("z"));
 	}
+	/**
+	 * Updates the guess word
+	 * @param s
+	 */
 	public void wordUpdate(String s)
 	{
 		displayedWord.setLabel(s);
 		
 	}
+	/**
+	 * Passes the value of the char in a gletter
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public GObject giveChar(double x, double y)
 	{
 		GObject obj = this.getElementAt(x,y);
