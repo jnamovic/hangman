@@ -21,6 +21,9 @@ import acm.program.Program;
 
 public class HangmanView extends GCompound implements MouseListener, ActionListener {
 
+	/**
+	 * Pulls in controller, model and word. Defines instances of most graphics
+	 */
 	HangmanController game;
 	HangmanModel model;
 	String word,message;

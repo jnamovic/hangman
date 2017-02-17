@@ -7,6 +7,9 @@ import acm.graphics.GObject;
 
 public class LetterArea extends GCompound
 {
+	/**
+	 * list of letters, fonts and game
+	 */
 	ArrayList<GLetter> guessDisplay=new ArrayList<GLetter>();
 	GLabel displayedWord;
 	HangmanController game;

@@ -4,6 +4,9 @@ import java.util.Scanner;
 public class HangmanModel {
 	final private Scanner scan=new Scanner(System.in);
 			
+	/**
+	 * has view, gamestop 
+	 */
 	HangmanView view;  // the view
 	private String word,guessWord="";
 	String weirdchars="'-_!.{}: "; 

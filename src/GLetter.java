@@ -6,6 +6,9 @@ import acm.graphics.*;
 
 public class GLetter extends GCompound
 {
+	/**
+	 * Class variables for every GLetters specific value/clickstate
+	 */
 	GLabel letter;
 	GRect back;
 	private static final Font FONT = new Font("Helvetica", Font.BOLD, 20);

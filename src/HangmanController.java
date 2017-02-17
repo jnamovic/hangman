@@ -6,6 +6,9 @@ public class HangmanController extends GraphicsProgram {
 
 
 		int totalwins=0,totallosses=0;
+		/**
+		 * Makes view and model
+		 */
 		HangmanView view;
 		HangmanModel model;
 		private static final Color behind = new Color(67,175,170);
