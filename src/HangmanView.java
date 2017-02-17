@@ -26,6 +26,7 @@ public class HangmanView extends GCompound implements MouseListener, ActionListe
 	Gallows execute;
 	LetterArea areaOfLetters;
 	JLabel feedback,score;
+	GImage boat;
 	GLetter gobj ;
 	JButton button;
 	private final double WID = 150;
