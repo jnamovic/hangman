@@ -56,7 +56,7 @@ public class HangmanView extends GCompound implements MouseListener, ActionListe
 		areaOfLetters=new LetterArea(word); 
 		add (execute,WID*2,HT);
 		execute.reset();
-		add(areaOfLetters, execute.getX()-LETTERX, execute.getY()-LETTERY);
+		add(areaOfLetters);
 		areaOfLetters.displayedWord.setColor(Color.black);
 		game.add(this);
 		
