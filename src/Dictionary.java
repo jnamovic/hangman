@@ -6,6 +6,9 @@ public class Dictionary {
 
 	private File file =new File("NauticalPirateterms.txt");
 	private String word;
+/**
+ * Scans a random amount of times pulling a word from the list
+ */
 	public Dictionary(){
 		try
 		{
@@ -22,9 +25,17 @@ public class Dictionary {
 		}
 		
 	}
+	/**
+	 * Passes the word to other classes
+	 * @return
+	 */
 	public String getWord(){
 		return word;
 	}
+	/**
+	 * Returns a new word
+	 * @return
+	 */
 	public String getNewWord(){
 		try
 		{
