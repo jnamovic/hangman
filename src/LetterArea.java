@@ -110,7 +110,9 @@ public class LetterArea extends GCompound
 		Color what = new Color(r,g,b);
 		for(int i =0; i<guessDisplay.size();i++)
 		{
+			 	pause(5);
 				guessDisplay.get(i).letter.setColor(what);
+				
 		}
 			
 	}

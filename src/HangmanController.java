@@ -30,8 +30,9 @@ public class HangmanController extends GraphicsProgram {
 		{
 			while(true)
 			{
-				view.areaOfLetters.change();
-				//view.areaOfLetters.differentChange();
+				//view.areaOfLetters.change();
+				view.areaOfLetters.differentChange();
+				
 			}
 		}
 	}
